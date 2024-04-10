@@ -4,10 +4,14 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Loading from './Loading';
 import NavBar from './NavBar';
+import { useRouter } from 'next/navigation';
 
 
 
 const Pokedex = () => {
+
+    const router = useRouter();
+
     const [pokemon, setPokemon] = useState([]);
     const [pokemonData, setPokemonData] = useState([]);
     const [offset, setOffset] = useState(0);
@@ -94,70 +98,78 @@ const Pokedex = () => {
                     searchTerm ? (
                         // console.log('El input ha cambiado')
                         filteredPokemonData.map((p, index) => (
-                
-                            <div key={index} className=" p-1 bg-white rounded-lg overflow-hidde shadow-transparent mb-5 md:mx-4 lg:mx-8 transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-emerald-700">
-                                <div className="relative h-44 ">
-                                    <Image
-                                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`}
-                                        width={200}
-                                        height={200}
-                                        // layout='fill'
-                                        objectFit="cover"
-                                        alt={p.name + ' Image'}
-                                        className='m-auto'
-                                    />
-                                </div>
-                                <div className="p-4">
-                                    <h4 className="text-xl font-bold mb-2">{p.name}</h4>
-                                    <div>
-                                        <h5 className="text-lg">Height:</h5>
-                                        <p>{p.height}</p>
-                                        <h5 className="text-lg">Weight:</h5>
-                                        <p>{p.weight}</p>
+
+                            <a onClick={()=>{
+                                router.push(`/pokemon/${p.id}`)
+                            }}>
+                                <div key={index} className=" p-1 bg-white rounded-lg overflow-hidde shadow-transparent mb-5 md:mx-4 lg:mx-8 transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-emerald-700">
+                                    <div className="relative h-44 ">
+                                        <Image
+                                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`}
+                                            width={200}
+                                            height={200}
+                                            // layout='fill'
+                                            objectFit="cover"
+                                            alt={p.name + ' Image'}
+                                            className='m-auto'
+                                        />
                                     </div>
-                                    <div className="mt-4">
-                                        {p.types.map((t, index) => (
-                                            <span key={index} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-                                                {t.type.name}
-                                            </span>
-                                        ))}
+                                    <div className="p-4">
+                                        <h4 className="text-xl font-bold mb-2">{p.name}</h4>
+                                        <div>
+                                            <h5 className="text-lg">Height:</h5>
+                                            <p>{p.height}</p>
+                                            <h5 className="text-lg">Weight:</h5>
+                                            <p>{p.weight}</p>
+                                        </div>
+                                        <div className="mt-4">
+                                            {p.types.map((t, index) => (
+                                                <span key={index} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                                                    {t.type.name}
+                                                </span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         ))
                     ) : (
                         // console.log('el input no ha cambiado')
                         pokemonData.map((p, index) => (
-                
-                            <div key={index} className=" p-1 bg-white rounded-lg overflow-hidde shadow-transparent mb-5 md:mx-4 lg:mx-8 transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-emerald-700">
-                                <div className="relative h-44 ">
-                                    <Image
-                                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`}
-                                        width={200}
-                                        height={200}
-                                        // layout='fill'
-                                        objectFit="cover"
-                                        alt={p.name + ' Image'}
-                                        className='m-auto'
-                                    />
-                                </div>
-                                <div className="p-4">
-                                    <h4 className="text-xl font-bold mb-2">{p.name}</h4>
-                                    <div>
-                                        <h5 className="text-lg">Height:</h5>
-                                        <p>{p.height}</p>
-                                        <h5 className="text-lg">Weight:</h5>
-                                        <p>{p.weight}</p>
+
+                            <a onClick={()=>{
+                                router.push(`/pokemon/${p.id}`)
+                            }}>
+                                <div key={index} className=" p-1 bg-white rounded-lg overflow-hidde shadow-transparent mb-5 md:mx-4 lg:mx-8 transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-red-500">
+                                    <div className="relative h-44 ">
+                                        <Image
+                                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`}
+                                            width={200}
+                                            height={200}
+                                            // layout='fill'
+                                            objectFit="cover"
+                                            alt={p.name + ' Image'}
+                                            className='m-auto'
+                                        />
                                     </div>
-                                    <div className="mt-4">
-                                        {p.types.map((t, index) => (
-                                            <span key={index} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
-                                                {t.type.name}
-                                            </span>
-                                        ))}
+                                    <div className="p-4">
+                                        <h4 className="text-xl font-bold mb-2">{p.name}</h4>
+                                        <div>
+                                            <h5 className="text-lg">Height:</h5>
+                                            <p>{p.height}</p>
+                                            <h5 className="text-lg">Weight:</h5>
+                                            <p>{p.weight}</p>
+                                        </div>
+                                        <div className="mt-4">
+                                            {p.types.map((t, index) => (
+                                                <span key={index} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                                                    {t.type.name}
+                                                </span>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         ))
                     )
                 }

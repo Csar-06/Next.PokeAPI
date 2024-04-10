@@ -1,10 +1,13 @@
+"use client"
 import React from 'react';
 import { useState } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 
 const NavBar = ({onSearchChange}) => {
 
+    const router = useRouter();
     const [searchTerm, setSearchTerm] = useState('');
 
 
@@ -16,7 +19,9 @@ const NavBar = ({onSearchChange}) => {
     return (
         <>        <nav className="bg-red-500 border-gray-200 dark:bg-gray-900">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
+                <a className="flex items-center space-x-3 rtl:space-x-reverse" onClick={()=>{
+                    router.push('/')
+                }}>
                     <Image
                         src={`/International_Pokémon_logo.svg.png`}
                         width={200}
