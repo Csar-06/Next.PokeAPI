@@ -21,38 +21,38 @@ const PokemonDesc = async ({ params }) => {
         <>
             <NavBar />
 
-            <section>
+            <section className='text-white'>
                 <div>
-                    <h1>{pokemon.name}</h1>
+                    <h1 className='text-center mt-40 text-6xl font-bold'>{pokemon.name.toUpperCase()}</h1>
 
-                    <div>
-                        <div>
+                    <div className='flex justify-around mx-auto my-28'>
+                        <div className='text-xl flex  flex-col justify-around font-bold'>
                             <p>ID #{pokemon.id}</p>
                             <p>HEIGHT: {pokemon.height}</p>
                             <p>WEIGHT: {pokemon.weight}</p>
-                            <p>ABILITIES: {pokemon.abilities.map((a, i) => (
-                                <span key={i} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                            <p className='flex flex-col w-32'>ABILITIES: {pokemon.abilities.map((a, i) => (
+                                <span key={i} className="flex justify-center bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 my-1 ml-3">
                                     {a.ability.name}
                                 </span>
                             ))}</p>
-                            <p>TYPE: {pokemon.types.map((t, i) => (
-                                <span key={i} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
+                            <p className='flex flex-row flex-wrap'>TYPE: {pokemon.types.map((t, i) => (
+                                <span key={i} className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 ml-2 relative top-10 right-14">
                                     {t.type.name}
-                                </span>
+                                </span> 
                             ))}</p>
                         </div>
 
                         <Image
                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
-                            width={200}
-                            height={200}
+                            width={500}
+                            height={500}
                             // layout='fill'
                             objectFit="cover"
                             alt={pokemon.name + ' Image'}
-                            className='m-auto'
+                            className='flex justify-center '
                         />
 
-                        <div className='grid'>
+                        <div className='flex flex-col justify-around text-xl font-bold'>
 
                             {pokemon.stats.map((s, i)=>(
                                <span className=''>

@@ -17,7 +17,7 @@ const NavBar = ({onSearchChange}) => {
         onSearchChange(event.target.value);
     };
     return (
-        <>        <nav className="bg-red-500 border-gray-200 dark:bg-gray-900">
+        <>        <nav className=" fixed z-20 w-full top-0 bg-red-500 border-gray-200 dark:bg-gray-900 ">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                 <a className="flex items-center space-x-3 rtl:space-x-reverse" onClick={()=>{
                     router.push('/')
