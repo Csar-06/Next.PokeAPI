@@ -102,7 +102,7 @@ const Pokedex = () => {
                             <a onClick={()=>{
                                 router.push(`/pokemon/${p.id}`)
                             }}>
-                                <div key={index} className=" p-1 bg-white rounded-lg overflow-hidde shadow-transparent mb-5 md:mx-4 lg:mx-8 transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-emerald-700">
+                                <div key={index} className=" p-1 bg-white rounded-lg overflow-hidde shadow-transparent mb-5 md:mx-4 lg:mx-8 transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-red-500">
                                     <div className="relative h-44 ">
                                         <Image
                                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`}
