@@ -16,7 +16,6 @@ const PokemonDesc = async ({ params }) => {
     // console.log(params.id);
 
     const pokemon = await getPokemon(params.id);
-    const evolutionChain = await getEvolutionChain(params.id);
     // console.log(pokemon);
     return (
         <>
@@ -56,7 +55,7 @@ const PokemonDesc = async ({ params }) => {
                         <div className='flex flex-col justify-around text-xl'>
 
                             {pokemon.stats.map((s, i) => (
-                                <span>
+                                <span key={i}>
                                     <span className='font-bold'>{s.stat.name.toUpperCase()}</span>: {s.base_stat}
                                 </span>
 
@@ -68,11 +67,6 @@ const PokemonDesc = async ({ params }) => {
                     </div>
                 </div>
             </section>
-
-            <section>
-                        
-            </section>
-
         </>
 
     );
