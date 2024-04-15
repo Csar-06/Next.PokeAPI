@@ -1,8 +1,6 @@
 import React from 'react';
 import NavBar from '../../components/NavBar';
 import Image from 'next/image';
-import { resolve } from 'styled-jsx/css';
-
 
 const getPokemon = async id => {
 
@@ -12,15 +10,6 @@ const getPokemon = async id => {
     return dt
 }
 
-const getEvolutionChain = async id =>{
-    const res = await fetch(`https://pokeapi.co/api/v2/evolution-chain/${id}/`);
-    const dt = await res.json();
-    console.log(dt.chain.evolves_to[0].evolves_to[0].species.url);
-    const evo1 = dt.chain.evolves_to[0].evolves_to[0].species.url;
-    const evo2 = dt.chain.evolves_to[0].species.url
-
-    return [evo1, evo2]
-}
 
 const PokemonDesc = async ({ params }) => {
 
