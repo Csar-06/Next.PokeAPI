@@ -100,7 +100,7 @@ const Pokedex = () => {
                         // console.log('El input ha cambiado')
                         filteredPokemonData.map((p, index) => (
 
-                            <a key={p.id} onClick={() => {
+                            <a key={index} onClick={() => {
                                 router.push(`/pokemon/${p.id}`)
 
                             }}>
@@ -139,7 +139,7 @@ const Pokedex = () => {
                         // console.log('el input no ha cambiado')
                         pokemonData.map((p, index) => (
 
-                            <a key={p.id} onClick={() => {
+                            <a key={index} onClick={() => {
                                 router.push(`/pokemon/${p.id}`)
                             }}>
                                 <div className=" p-1 bg-white rounded-lg overflow-hidde shadow-transparent mb-5 md:mx-4 lg:mx-8 transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-red-500">
