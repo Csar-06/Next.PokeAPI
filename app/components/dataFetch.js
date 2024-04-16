@@ -1,4 +1,3 @@
-
 "use client"
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -37,6 +36,7 @@ const Pokedex = () => {
         setLoading(true);
         try {
             const promises = pokemon.map(async p => {
+
                 const res = await fetch(p.url);
                 return res.json();
             });
@@ -79,6 +79,7 @@ const Pokedex = () => {
     useEffect(() => {
         const handleScroll = () => {
             if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight || loading) return;
+
             fetchPokemon();
         };
 
@@ -99,10 +100,11 @@ const Pokedex = () => {
                         // console.log('El input ha cambiado')
                         filteredPokemonData.map((p, index) => (
 
-                            <a onClick={()=>{
+                            <a key={p.id} onClick={() => {
                                 router.push(`/pokemon/${p.id}`)
+
                             }}>
-                                <div key={index} className=" p-1 bg-white rounded-lg overflow-hidde shadow-transparent mb-5 md:mx-4 lg:mx-8 transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-red-500">
+                                <div className=" p-1 bg-white rounded-lg overflow-hidde shadow-transparent mb-5 md:mx-4 lg:mx-8 transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-red-500">
                                     <div className="relative h-44 ">
                                         <Image
                                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`}
@@ -137,10 +139,10 @@ const Pokedex = () => {
                         // console.log('el input no ha cambiado')
                         pokemonData.map((p, index) => (
 
-                            <a onClick={()=>{
+                            <a key={p.id} onClick={() => {
                                 router.push(`/pokemon/${p.id}`)
                             }}>
-                                <div key={index} className=" p-1 bg-white rounded-lg overflow-hidde shadow-transparent mb-5 md:mx-4 lg:mx-8 transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-red-500">
+                                <div className=" p-1 bg-white rounded-lg overflow-hidde shadow-transparent mb-5 md:mx-4 lg:mx-8 transform transition duration-300 hover:scale-105 shadow-lg hover:shadow-red-500">
                                     <div className="relative h-44 ">
                                         <Image
                                             src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${p.id}.png`}
