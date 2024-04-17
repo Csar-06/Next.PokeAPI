@@ -4,7 +4,7 @@ const nextConfig = {
         domains: ['raw.githubusercontent.com'],
         unoptimized: true,   
     },
-    // output: 'export',
+    output: 'export',
 
 };
 
