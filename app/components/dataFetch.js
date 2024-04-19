@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import Loading from './Loading';
 import NavBar from './NavBar';
@@ -17,7 +17,7 @@ const Pokedex = () => {
     const [loading, setLoading] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
 
-    const fetchPokemon = async () => {
+    const fetchPokemon = useCallback(async () => {
         setLoading(true);
         try {
             const res = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`);
@@ -30,9 +30,9 @@ const Pokedex = () => {
         } finally {
             setLoading(false);
         }
-    };
+    },[offset]);
 
-    const fetchPokemonData = async () => {
+    const fetchPokemonData = useCallback(async () => {
         setLoading(true);
         try {
             const promises = pokemon.map(async p => {
@@ -47,7 +47,7 @@ const Pokedex = () => {
         } finally {
             setLoading(false);
         }
-    };
+    },[pokemon]);
 
     const handleSearchChange = (searchTerm) => {
 
@@ -67,13 +67,13 @@ const Pokedex = () => {
 
             return () => clearTimeout(timeoutId);
         }
-    }, [offset]);
+    }, [fetchPokemon, offset]);
 
 
     useEffect(() => {
         console.log('useEffect fetch Pokemon Data');
         fetchPokemonData();
-    }, [pokemon]);
+    }, [fetchPokemonData, pokemon]);
 
 
     useEffect(() => {
@@ -88,7 +88,7 @@ const Pokedex = () => {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [loading]);
+    }, [fetchPokemon, loading]);
 
     return (
         <>
